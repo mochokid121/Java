@@ -1,0 +1,115 @@
+/* Patrick Lowitz
+Exercise 3.21
+IST 311
+August 29, 2014 */
+
+import javax.swing.*;
+
+public class LowitzDayOfTheWeek {
+	public static void main(String[] args) {
+
+		String yearString = JOptionPane.showInputDialog(null, "Enter the year(ex. 2014):",
+				"Zeller's Congruence", JOptionPane.QUESTION_MESSAGE);
+			int year = Integer.parseInt(yearString);
+//m is the month
+		String mString = JOptionPane.showInputDialog(null, "Enter the month (January is 1, February is 2, and so on..):",
+				"Zeller's Congruence", JOptionPane.QUESTION_MESSAGE);
+			int m = Integer.parseInt(mString);
+//q is day of the month
+		String qString = JOptionPane.showInputDialog(null, "Enter the day of the month (1-31): ",
+				"Zeller's Congruence", JOptionPane.QUESTION_MESSAGE);
+			int q = Integer.parseInt(qString);
+
+		//Finds the month
+		switch (m) {
+		    case 1:
+			year--;
+			mString = "January";
+			break;
+		    case 2:
+		        year--;
+		        mString = "February";
+		        break;
+		    case 3:
+		        mString = "March";
+		        break;
+		    case 4:
+		        mString = "April";
+		        break;
+		    case 5:
+		        mString = "May";
+		        break;
+		    case 6:
+		        mString = "June";
+		        break;
+		    case 7:
+		        mString = "July";
+		        break;
+		    case 8:
+		        mString = "August";
+		        break;
+		    case 9:
+		        mString = "September";
+		        break;
+		    case 10:
+		        mString = "October";
+		        break;
+		    case 11:
+		        mString = "November";
+		        break;
+		    case 12:
+		        mString = "December";
+		        break;
+		    default:
+		        mString = "Invalid month";
+		        break;
+		    }
+
+		int j = year / 100;
+		int k = year % 100;
+		double h = ((q + ((26 * (m + 1) / 10)) + k + (k / 4) + (j / 4) + (5 * j)) % 7);
+		int h1 = (int) h; //Convert to an int from double because of switch statement below
+
+		//Finds the day
+		switch (h1) {
+		    case 0:
+			qString = "Saturday";
+		    	break;
+		    case 1:
+		    	qString = "Sunday";
+		    	break;
+		    case 2:
+		        qString = "Monday";
+		        break;
+		    case 3:
+		        qString = "Tuesday";
+		        break;
+		    case 4:
+		        qString = "Wednesday";
+		        break;
+		    case 5:
+		        qString = "Thursday";
+		        break;
+		    case 6:
+		        qString = "Friday";
+		        break;
+		    default:
+		        qString = "Invalid day";
+		        break;
+		    }
+		    //Prints results to the user
+		    System.out.println("Day of the week is: " + qString);
+	}
+}
+
+/*
+Day of the week is: Sunday
+Press any key to continue . . .
+
+Day of the week is: Tuesday
+Press any key to continue . . .
+
+Day of the week is: Wednesday
+Press any key to continue . . .
+
+*/
